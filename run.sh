@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # common vars
 wsl='/etc/wsl.conf'
@@ -10,7 +10,10 @@ rm -f $resolv
 
 # Create custom WSL name resolution
 cp ./dist/wsl.conf $wsl
+echo "[boot]" >> $wsl
+echo "systemd=true" >> $wsl
 cp ./dist/resolv.conf $resolv
+
 
 # This prevents resolv.conf from being deleted when WSL starts
 chattr +i $resolv
